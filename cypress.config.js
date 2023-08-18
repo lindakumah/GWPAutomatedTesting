@@ -6,7 +6,7 @@ module.exports = defineConfig({
   // },
   projectId: "m5gbvc",
   e2e: {
-    baseUrl: "https://mcp.gds.amalitech-dev.net",
+    baseUrl: "https://gds-test.amalitech-dev.net",
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },

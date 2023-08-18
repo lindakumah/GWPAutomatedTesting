@@ -3,7 +3,7 @@ name: 'Cypress Tests'
 on:
   push:
     branches:
-      - main
+      - testing
   schedule:
     - cron: '* 09 * * 1,3'
 jobs:
@@ -20,7 +20,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
          start: yarn start
-         wait-on: 'https://mcp.gds.amalitech-dev.net'
+         wait-on: 'https://gds-test.amalitech-dev.net'
          wait-on-timeout: 120
          record: true
          parallel: true
