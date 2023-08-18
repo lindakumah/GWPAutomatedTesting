@@ -1,0 +1,24 @@
+{
+  "name": "testing",
+  "version": "1.0.0",
+  "description": "cypress test",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx cypress run --record --key 275c520d-6487-49c9-be63-ad99a051507a ",
+    "test": "npx cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lindakumah/GWPAutomatedTesting.git"
+  },
+  "author": "Linda Kumah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lindakumah/GWPAutomatedTesting/issues"
+  },
+  "homepage": "https://github.com/lindakumah/GWPAutomatedTesting#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "cypress": "^12.17.4"
+  }
+}
