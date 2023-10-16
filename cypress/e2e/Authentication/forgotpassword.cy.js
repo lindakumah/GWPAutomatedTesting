@@ -5,10 +5,10 @@ describe("Forgot Password Page", () => {
     });
   
     it("should send email for password reset", () => {
-      cy.get('[data-cy=email]').type(emailWithTimestamp);
-      cy.get('[data-cy=forgot-password]').click();
-      //cy.get("#error-message").should("be.visible"); 
-      //cy.get("#error-message").should("contain", "Username/email or password is invalid");
-    });
-
+      const emailWithTimestamp = `user${timestamp}@example.com`;
+      cy.dataCy('email').type(emailWithTimestamp);
+      cy.dataCy('forgot-password').click();
+      cy.get("#notistack-snackbar").should("be.visible"); 
+      cy.get("#notistack-snackbar").should("contain", "Email sent");
+    })
   });

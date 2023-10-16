@@ -1,3 +1,7 @@
+const timestamp = Date.now(); 
+const usernameWithTimestamp = `username${timestamp}`;
+const emailWithTimestamp = `user${timestamp}@example.com`;
+
 describe("Register Page", () => {
     beforeEach(() => {
       // Visit the register page or set the URL to your register page
@@ -5,20 +9,27 @@ describe("Register Page", () => {
     });
   
     it("should register successfully", () => {
+      cy.dataCy('companyId').type('41101');
+      cy.dataCy('name').type('Linda CypressAutomation');
+      cy.dataCy('username').type(usernameWithTimestamp);
+      cy.dataCy('email').type(emailWithTimestamp);
+      cy.dataCy('password').type('autopass@123');
+      cy.dataCy('confirmPassword').type('autopass@123');
+      cy.dataCy('register').click();
+      cy.get("#notistack-snackbar").should("be.visible"); 
+      cy.get("#notistack-snackbar").should("contain", "Thank you for registering. Please check your email for a link to verify your account");
+    });
 
-      const timestamp = Date.now(); 
-      const usernameWithTimestamp = `username${timestamp}`;
-      const emailWithTimestamp = `user${timestamp}@example.com`;
-      // Fill in all fields
-      cy.get('[data-cy=companyId]').type('41101');
-      cy.get('[data-cy=name]').type('Linda CypressAutomation');
-      cy.get('[data-cy=username]').type(usernameWithTimestamp);
-      cy.get('[data-cy=email]').type(emailWithTimestamp);
-      cy.get('[data-cy=password]').type('autopass@123');
-      cy.get('[data-cy=confirmPassword]').type('autopass@123');
-      cy.get('[data-cy=register]').click();
-      //cy.get("#error-message").should("be.visible"); 
-      //cy.get("#error-message").should("contain", "Username/email or password is invalid");
+    it("checks for Company ID", () => {
+      cy.dataCy('companyId').type('11111');
+      cy.dataCy('name').type('Linda CypressAutomation');
+      cy.dataCy('username').type(usernameWithTimestamp);
+      cy.dataCy('email').type(emailWithTimestamp);
+      cy.dataCy('password').type('autopass@123');
+      cy.dataCy('confirmPassword').type('autopass@123');
+      cy.dataCy('register').click();
+      cy.get("#notistack-snackbar").should("be.visible"); 
+      cy.get("#notistack-snackbar").should("contain", "The Company ID is invalid");
     });
 
   });

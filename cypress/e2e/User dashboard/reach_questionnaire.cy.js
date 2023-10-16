@@ -11,10 +11,6 @@ describe("Login Page", () => {
     });
   
     it("should save a reach questionnaire", () => {
-      // Fill in the username and password fields
-    //   cy.get('[data-cy=usernameOrEmail]').type('linda.kumah@amalitech.com');
-    //   cy.get('[data-cy=password]').type('heypassword$');
-    //   cy.get('[data-cy=login]').click();
       cy.login(admin.email, admin.password);
       cy.url().should("include", "/dashboard");
       cy.get('[data-cy=remove-session]').contains('List of materials').click();
