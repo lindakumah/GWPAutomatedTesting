@@ -4,7 +4,7 @@ describe("Register Page", () => {
       cy.visit("/register");
     });
   
-    it("should log in with valid credentials", () => {
+    it("should register successfully", () => {
 
       const timestamp = Date.now(); 
       const usernameWithTimestamp = `username${timestamp}`;

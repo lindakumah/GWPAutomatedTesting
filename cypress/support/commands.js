@@ -23,3 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('dataCy', (value) => {
+    return cy.get(`[data-cy="${value}"]`);
+  });
+
+   const login = (email, password) => {
+    //cy.visit('/');
+    cy.dataCy('usernameOrEmail').type(email);
+    cy.dataCy('password').type(password);
+    cy.dataCy('login').click();
+  };
+
+  Cypress.Commands.add('login', login);
+
