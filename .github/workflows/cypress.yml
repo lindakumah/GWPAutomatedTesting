@@ -24,7 +24,7 @@ jobs:
          wait-on-timeout: 120
          record: true
          parallel: true
-         spec: cypress/e2e/*
+        #  spec: cypress/e2e/*
         env:
          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
