@@ -7,4 +7,8 @@ export const loginData = {
       email: 'some.user@gmail.com',
       password: 'alphaBeta',
     },
+    unverifiedCredentials: {
+      email: 'pogavod671@undewp.com',
+      password: 'unverified123',
+    },
   };
