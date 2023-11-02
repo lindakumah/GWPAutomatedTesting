@@ -1,12 +1,9 @@
 import { loginData } from '../../fixtures/logincredentials';
-// import {login}
 
-// const { admin, invalidCredentials } = loginData;
 const { admin } = loginData;
 
 describe("Login Page", () => {
-    beforeEach(() => {
-      // Visit the login page or set the URL to your login page
+    before(() => {
       cy.visit("/");
     });
   
@@ -20,8 +17,7 @@ describe("Login Page", () => {
       cy.get('[data-cy=to-reach-questionnaire]').first().click();
       cy.get('[data-cy=save]').click();
       cy.url().should("include", "/materials");
-      cy.get("#notistack-snackbar").should("be.visible"); 
-      cy.get("#notistack-snackbar").should("contain", "Data Successfully Saved");
+      cy.get("#notistack-snackbar").should("be.visible").and("contain", "Data Successfully Saved");
     });
   
 
