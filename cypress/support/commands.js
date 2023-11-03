@@ -25,15 +25,24 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('dataCy', (value) => {
-    return cy.get(`[data-cy="${value}"]`);
-  });
+  return cy.get(`[data-cy="${value}"]`);
+});
 
-   const login = (email, password) => {
-    //cy.visit('/');
+const login = (email, password) => {
+  //cy.visit('/');
+  cy.dataCy('usernameOrEmail').type(email);
+  cy.dataCy('password').type(password);
+  cy.dataCy('login').click();
+};
+
+Cypress.Commands.add('login', login);
+
+Cypress.Commands.add('loginWithSession', (email, password) => {
+  cy.session([email, password], () => {
+    cy.visit('/');
     cy.dataCy('usernameOrEmail').type(email);
     cy.dataCy('password').type(password);
     cy.dataCy('login').click();
-  };
-
-  Cypress.Commands.add('login', login);
-
+    cy.url().should('include', '/dashboard');
+  });
+});
