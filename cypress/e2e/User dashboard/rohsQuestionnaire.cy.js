@@ -1,11 +1,11 @@
 import { loginData } from '../../fixtures/logincredentials';
 
-const { admin } = loginData;
+const { user } = loginData;
 
 describe('Login Page', () => {
   beforeEach(() => {
     cy.visit('/');
-    cy.login(admin.email, admin.password);
+    cy.login(user.email, user.password);
     cy.url().should('include', '/dashboard');
     cy.dataCy('remove-session').contains('List of materials').click();
     cy.dataCy('rohs-questionnaire').eq(1).click();

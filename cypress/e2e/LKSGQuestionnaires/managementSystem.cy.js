@@ -2,23 +2,29 @@ import { loginData } from '../../fixtures/logincredentials';
 
 const { lksgCredentials } = loginData;
 
-describe('Login Page', () => {
+describe('LKSG Questionnaire B', () => {
   beforeEach(() => {
     cy.loginWithSession(lksgCredentials.username, lksgCredentials.password);
     cy.visit('/dashboard');
     cy.dataCy('remove-session').contains('Supply Chain').click();
-    cy.url().should('include', '/supply-chain');
+    cy.location('pathname').should('eq', '/supply-chain');
     cy.dataCy('tab-2').click();
     cy.get('.loading').should('not.exist');
   });
 
-  it('should save LKSG questionnaire A', () => {
+  it('should save LKSG questionnaire B', () => {
+    cy.dataCy('select').eq(2).select('No');
+    cy.dataCy('select').eq(3).select('No');
+    cy.dataCy('select').eq(4).select('No');
     cy.dataCy('save').first().click({ force: true });
-    cy.get('#notistack-snackbar').should('contain', 'Data Successfully Saved');
+    cy.get('#notistack-snackbar').should(
+      'have.text',
+      'Data Successfully Saved.'
+    );
   });
 
-  it('should cancel LKSG questionnaire A', () => {
+  it('should cancel LKSG questionnaire B', () => {
     cy.dataCy('cancel').first().click({ force: true });
-    cy.url().should('include', '/supply-chain');
+    cy.location('pathname').should('eq', '/supply-chain');
   });
 });

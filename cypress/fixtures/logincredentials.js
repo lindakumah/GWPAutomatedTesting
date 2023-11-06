@@ -1,5 +1,5 @@
 export const loginData = {
-  admin: {
+  user: {
     email: 'linda.kumah@amalitech.com',
     password: 'heypassword$',
   },

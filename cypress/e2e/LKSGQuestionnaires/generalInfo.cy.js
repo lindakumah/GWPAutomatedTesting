@@ -2,26 +2,32 @@ import { loginData } from '../../fixtures/logincredentials';
 
 const { lksgCredentials } = loginData;
 
-describe('Login Page', () => {
+describe('LKSG Questionnaire A', () => {
   beforeEach(() => {
     cy.loginWithSession(lksgCredentials.username, lksgCredentials.password);
     cy.visit('/dashboard');
     cy.dataCy('remove-session').contains('Supply Chain').click();
-    cy.url().should('include', '/supply-chain');
+    cy.location('pathname').should('eq', '/supply-chain');
     cy.dataCy('tab-1').click();
   });
 
   it('should save LKSG questionnaire A', () => {
     cy.dataCy('name').should('have.value', 'Newtest3 Company SE');
     cy.dataCy('supplierId').should('have.value', '2226671');
+    cy.dataCy('select').first().select('No');
+    cy.dataCy('select').eq(1).select("I don't know");
+    cy.dataCy('input').first().clear().type('Agnes Arhin');
+    cy.dataCy('input').eq(1).clear().type('emailexample@gmail.com');
+    cy.dataCy('input').eq(2).clear().type('0908763425');
     cy.dataCy('save').first().click();
-    cy.get('#notistack-snackbar')
-      .should('be.visible')
-      .and('contain', 'Data Successfully Saved');
+    cy.get('#notistack-snackbar').should(
+      'have.text',
+      'Data Successfully Saved.'
+    );
   });
 
   it('should cancel LKSG questionnaire A', () => {
     cy.dataCy('cancel').first().click({ force: true });
-    cy.url().should('include', '/supply-chain');
+    cy.location('pathname').should('eq', '/supply-chain');
   });
 });
