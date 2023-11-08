@@ -1,7 +1,7 @@
 export const loginData = {
   user: {
-    email: 'linda.kumah@amalitech.com',
-    password: 'heypassword$',
+    email: 'gdsweb22@gmail.com',
+    password: 'password123',
   },
   invalidCredentials: {
     email: 'some.user@gmail.com',

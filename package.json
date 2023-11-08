@@ -17,8 +17,8 @@
     "url": "https://github.com/lindakumah/GWPAutomatedTesting/issues"
   },
   "homepage": "https://github.com/lindakumah/GWPAutomatedTesting#readme",
-  "dependencies": {},
   "devDependencies": {
-    "cypress": "^12.17.4"
+    "cypress": "^12.17.4",
+    "cypress-real-events": "^1.11.0"
   }
 }
