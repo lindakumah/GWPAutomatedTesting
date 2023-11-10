@@ -8,7 +8,7 @@ describe('Register Page', () => {
   });
 
   it('should register successfully', () => {
-    cy.dataCy('companyId').type('41101');
+    cy.dataCy('companyId').type('222667');
     cy.dataCy('name').type('Linda CypressAutomation');
     cy.dataCy('username').type(usernameWithTimestamp);
     cy.dataCy('email').type(emailWithTimestamp);
@@ -22,7 +22,7 @@ describe('Register Page', () => {
     );
   });
 
-  it('checks for Company ID', () => {
+  it('checks for invalid Company ID', () => {
     cy.dataCy('companyId').type('11111');
     cy.dataCy('name').type('Linda CypressAutomation');
     cy.dataCy('username').type(usernameWithTimestamp);

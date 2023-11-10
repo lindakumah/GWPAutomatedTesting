@@ -1,10 +1,10 @@
 import { loginData } from '../../fixtures/logincredentials';
 
-const { lksgCredentials } = loginData;
+const { user } = loginData;
 
 describe('LKSG Questionnaire B', () => {
   beforeEach(() => {
-    cy.loginWithSession(lksgCredentials.username, lksgCredentials.password);
+    cy.loginWithSession(user.username, user.password);
     cy.visit('/dashboard');
     cy.dataCy('remove-session').contains('Supply Chain').click();
     cy.location('pathname').should('eq', '/supply-chain');

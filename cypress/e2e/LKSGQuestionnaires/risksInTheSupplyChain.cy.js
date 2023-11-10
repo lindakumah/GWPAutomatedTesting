@@ -4,7 +4,7 @@ const { lksgCredentials } = loginData;
 
 describe('LKSG Questionnaire D', () => {
   beforeEach(() => {
-    cy.loginWithSession(lksgCredentials.username, lksgCredentials.password);
+    cy.loginWithSession(user.username, user.password);
     cy.visit('/dashboard');
     cy.dataCy('remove-session').contains('Supply Chain').click();
     cy.location('pathname').should('eq', '/supply-chain');

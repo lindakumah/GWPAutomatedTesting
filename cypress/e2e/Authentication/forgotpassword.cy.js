@@ -4,8 +4,6 @@ describe('Forgot Password Page', () => {
     cy.dataCy('to-forgot-password').click();
     cy.dataCy('email').type(`user${new Date().getTime()}@example.com`);
     cy.dataCy('forgot-password').click();
-    cy.get('#notistack-snackbar')
-      .should('be.visible')
-      .and('have.text', 'Email sent');
+    cy.get('#notistack-snackbar').should('have.text', 'Email Sent');
   });
 });

@@ -1,10 +1,10 @@
 import { loginData } from '../../fixtures/logincredentials';
 
-const { lksgCredentials } = loginData;
+const { user } = loginData;
 
 describe('LKSG Questionnaire A', () => {
   beforeEach(() => {
-    cy.loginWithSession(lksgCredentials.username, lksgCredentials.password);
+    cy.loginWithSession(user.username, user.password);
     cy.visit('/dashboard');
     cy.dataCy('remove-session').contains('Supply Chain').click();
     cy.location('pathname').should('eq', '/supply-chain');
@@ -12,8 +12,8 @@ describe('LKSG Questionnaire A', () => {
   });
 
   it('should save LKSG questionnaire A', () => {
-    cy.dataCy('name').should('have.value', 'Newtest3 Company SE');
-    cy.dataCy('supplierId').should('have.value', '2226671');
+    cy.dataCy('name').should('have.value', 'Newtest Company SE');
+    cy.dataCy('supplierId').should('have.value', '2226669');
     cy.dataCy('select').first().select('No');
     cy.dataCy('select').eq(1).select("I don't know");
     cy.dataCy('input').first().clear().type('Agnes Arhin');

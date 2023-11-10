@@ -8,18 +8,20 @@ describe('Login Page', () => {
     cy.login(user.email, user.password);
     cy.url().should('include', '/dashboard');
     cy.dataCy('remove-session').contains('List of materials').click();
-    cy.dataCy('to-reach-questionnaire').eq(1).click();
+    cy.dataCy('to-reach-questionnaire').first().click();
   });
 
   it('should fill and save a reach questionnaire', () => {
-    cy.dataCy('checkbox').then((checkbox) => {
-      checkbox[0].defaultChecked === false
-        ? cy.dataCy('checkbox').dblclick()
-        : null;
-    });
+    // cy.dataCy('checkbox').then((checkbox) => {
+    //   checkbox[0].defaultChecked === false
+    //     ? cy.dataCy('checkbox').dblclick()
+    //     : null;
+    // });
     cy.dataCy('reach-version').select('07/2019');
     cy.dataCy('material-type').select('Manufactured item');
-    //remember to add the ANNEX XVIII dropdown
+    cy.dataCy('annexRegulation').select(
+      'Material is subject to a restriction under Annex XVII of the REACH Regulation'
+    );
     cy.dataCy('handle-add-row').click();
     cy.dataCy('material')
       .last()

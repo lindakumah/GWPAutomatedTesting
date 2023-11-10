@@ -1,6 +1,7 @@
 export const loginData = {
   user: {
     email: 'gdsweb22@gmail.com',
+    username: 'Ghanem',
     password: 'password123',
   },
   invalidCredentials: {
@@ -8,7 +9,8 @@ export const loginData = {
     password: 'alphaBeta',
   },
   unverifiedCredentials: {
-    email: 'pogavod671@undewp.com',
+    email: 'hidef55827@rdluxe.com',
+    username: 'Unverified',
     password: 'unverified123',
   },
   lksgCredentials: {
