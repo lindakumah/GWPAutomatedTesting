@@ -2,7 +2,7 @@ import { loginData } from '../../fixtures/logincredentials';
 
 const { user } = loginData;
 
-describe('Login Page', () => {
+describe('FAQs Page', () => {
   beforeEach(() => {
     cy.loginWithSession(user.email, user.password);
     cy.visit('/dashboard');

@@ -17,4 +17,8 @@ export const loginData = {
     username: 'Letustry',
     password: 'password123',
   },
+  admin: {
+    email: 'gdsweb47@gmail.com',
+    password: 'password@123',
+  },
 };

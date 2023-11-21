@@ -2,9 +2,8 @@ import { loginData } from '../../fixtures/logincredentials';
 
 const { user } = loginData;
 
-describe('Login Page', () => {
+describe('Edit material data', () => {
   beforeEach(() => {
-    cy.visit('/');
     cy.login(user.email, user.password);
     cy.url().should('include', '/dashboard');
     cy.dataCy('remove-session').contains('List of materials').click();

@@ -2,9 +2,8 @@ import { loginData } from '../../fixtures/logincredentials';
 
 const { user } = loginData;
 
-describe('Login Page', () => {
+describe('Copy questionnaire data', () => {
   beforeEach(() => {
-    cy.visit('/');
     cy.login(user.email, user.password);
     cy.url().should('include', '/dashboard');
     cy.dataCy('remove-session').contains('List of materials').click();
@@ -27,8 +26,11 @@ describe('Login Page', () => {
       .siblings()
       .first()
       .click({ force: true });
+    // cy.dataCy('checkbox-reach').siblings().first().click({ force: true }); //Copy attached files
+    // cy.dataCy('checkbox-rohs').siblings().first().click({ force: true });
+    // cy.dataCy('checkbox-fils').siblings().first().click({ force: true });
+    cy.dataCy('save-btn').click();
     cy.dataCy('save').click();
-    cy.dataCy('save').eq(1).click();
     cy.get('#notistack-snackbar').should(
       'have.text',
       'Data copied successfully'

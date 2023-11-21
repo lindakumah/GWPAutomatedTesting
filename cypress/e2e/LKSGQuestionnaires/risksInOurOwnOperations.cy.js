@@ -1,22 +1,21 @@
 import { loginData } from '../../fixtures/logincredentials';
 
-const { lksgCredentials } = loginData;
+const { user } = loginData;
 
 describe('LKSG Questionnaire C', () => {
   beforeEach(() => {
-    cy.loginWithSession(user.username, user.password);
-    cy.visit('/dashboard');
+    cy.login(user.username, user.password);
     cy.dataCy('remove-session').contains('Supply Chain').click();
     cy.location('pathname').should('eq', '/supply-chain');
     cy.dataCy('tab-3').click();
   });
 
   it('should save LKSG questionnaire A', () => {
-    cy.dataCy('select').eq(5).select('No');
-    cy.dataCy('select').eq(6).select('No');
-    cy.dataCy('select').eq(7).select('No');
-    cy.dataCy('select').eq(8).select('No');
-    cy.dataCy('select').eq(9).select('No');
+    cy.dataCy('ChakraSelectComponent').eq(3).select('Yes');
+    cy.dataCy('ChakraSelectComponent').eq(4).select('Yes');
+    cy.dataCy('ChakraSelectComponent').eq(5).select('No');
+    cy.dataCy('ChakraSelectComponent').eq(6).select('No');
+    cy.dataCy('ChakraSelectComponent').eq(7).select('No');
     cy.dataCy('save').first().click({ force: true });
     cy.get('#notistack-snackbar').should('contain', 'Data Successfully Saved');
   });

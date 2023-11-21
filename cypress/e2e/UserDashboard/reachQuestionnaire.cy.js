@@ -2,16 +2,15 @@ import { loginData } from '../../fixtures/logincredentials';
 
 const { user } = loginData;
 
-describe('Login Page', () => {
+describe('REACH Questionnaire', () => {
   beforeEach(() => {
-    cy.visit('/');
     cy.login(user.email, user.password);
     cy.url().should('include', '/dashboard');
     cy.dataCy('remove-session').contains('List of materials').click();
     cy.dataCy('to-reach-questionnaire').first().click();
   });
 
-  it('should fill and save a reach questionnaire', () => {
+  it.only('should fill and save a reach questionnaire', () => {
     // cy.dataCy('checkbox').then((checkbox) => {
     //   checkbox[0].defaultChecked === false
     //     ? cy.dataCy('checkbox').dblclick()
@@ -19,9 +18,12 @@ describe('Login Page', () => {
     // });
     cy.dataCy('reach-version').select('07/2019');
     cy.dataCy('material-type').select('Manufactured item');
-    cy.dataCy('annexRegulation').select(
-      'Material is subject to a restriction under Annex XVII of the REACH Regulation'
-    );
+    //cy.wait(5000);
+    cy.dataCy('annexRegulation').click();
+    cy.contains('Material is NOT subject').click();
+    // cy.dataCy('annexRegulation').click(
+    //   'Material is subject to a restriction under Annex XVII of the REACH Regulation'
+    // );
     cy.dataCy('handle-add-row').click();
     cy.dataCy('material')
       .last()

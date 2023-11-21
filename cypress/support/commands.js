@@ -29,7 +29,7 @@ Cypress.Commands.add('dataCy', (value) => {
 });
 
 const login = (email, password) => {
-  //cy.visit('/');
+  cy.visit('/');
   cy.dataCy('usernameOrEmail').type(email);
   cy.dataCy('password').type(password);
   cy.dataCy('login').click();
@@ -45,4 +45,8 @@ Cypress.Commands.add('loginWithSession', (email, password) => {
     cy.dataCy('login').click({ force: true });
     cy.url().should('include', '/dashboard');
   });
+});
+
+Cypress.Commands.add('waitForLoader', () => {
+  cy.get('#loader-container', { timeout: 100000 }).should('not.exist');
 });

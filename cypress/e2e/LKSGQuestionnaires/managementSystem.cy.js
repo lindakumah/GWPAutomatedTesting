@@ -4,8 +4,7 @@ const { user } = loginData;
 
 describe('LKSG Questionnaire B', () => {
   beforeEach(() => {
-    cy.loginWithSession(user.username, user.password);
-    cy.visit('/dashboard');
+    cy.login(user.username, user.password);
     cy.dataCy('remove-session').contains('Supply Chain').click();
     cy.location('pathname').should('eq', '/supply-chain');
     cy.dataCy('tab-2').click();
@@ -13,9 +12,10 @@ describe('LKSG Questionnaire B', () => {
   });
 
   it('should save LKSG questionnaire B', () => {
-    cy.dataCy('select').eq(2).select('No');
-    cy.dataCy('select').eq(3).select('No');
-    cy.dataCy('select').eq(4).select('No');
+    cy.dataCy('ChakraSelectComponent').first().select('No');
+    cy.dataCy('input').first().type('95');
+    cy.dataCy('ChakraSelectComponent').eq(1).select('No');
+    cy.dataCy('ChakraSelectComponent').eq(2).select('Yes', { force: true });
     cy.dataCy('save').first().click({ force: true });
     cy.get('#notistack-snackbar').should(
       'have.text',

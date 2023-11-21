@@ -1,20 +1,19 @@
 import { loginData } from '../../fixtures/logincredentials';
 
-const { lksgCredentials } = loginData;
+const { user } = loginData;
 
 describe('LKSG Questionnaire D', () => {
   beforeEach(() => {
-    cy.loginWithSession(user.username, user.password);
-    cy.visit('/dashboard');
+    cy.login(user.username, user.password);
     cy.dataCy('remove-session').contains('Supply Chain').click();
     cy.location('pathname').should('eq', '/supply-chain');
     cy.dataCy('tab-4').click();
   });
 
   it('should save LKSG questionnaire D', () => {
-    cy.dataCy('select').eq(10).select('No');
-    cy.dataCy('select').eq(11).select('No');
-    cy.dataCy('select').eq(12).select('No');
+    cy.dataCy('questionOneDropDown').select('No');
+    cy.dataCy('questionTwoDropDown').select('No');
+    cy.dataCy('questionThreeDropDown').select('No');
     cy.dataCy('save').first().click({ force: true });
     cy.get('#notistack-snackbar').should('contain', 'Data Successfully Saved');
   });
