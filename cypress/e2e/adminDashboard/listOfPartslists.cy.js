@@ -2,15 +2,15 @@ import { loginData } from '../../fixtures/logincredentials';
 
 const { admin } = loginData;
 
-describe('List of suppliers', () => {
+describe('List of partslists', () => {
   beforeEach(() => {
     cy.login(admin.email, admin.password);
     cy.url().should('include', '/dashboard');
-    cy.dataCy('remove-session').contains('List of Suppliers').click();
+    cy.dataCy('remove-session').contains('List of Parts Lists').click();
     cy.dataCy('getSidebarActiveTab').first().click();
   });
 
-  it('admin should fill and save a reach questionnaire', () => {
+  it('should fill and save a reach questionnaire', () => {
     cy.dataCy('to-reach-questionnaire').first().click();
     cy.dataCy('reach-version').select('07/2019');
     cy.dataCy('material-type').select('Manufactured item');
@@ -32,7 +32,7 @@ describe('List of suppliers', () => {
     );
   });
 
-  it('admin should fill and save a rohs questionnaire', () => {
+  it('should fill and save a rohs questionnaire', () => {
     cy.dataCy('rohs-questionnaire').first().click();
     cy.dataCy('rohs-version').select('RoHS II - 07/2019');
     cy.dataCy('rohs-declaration').select(

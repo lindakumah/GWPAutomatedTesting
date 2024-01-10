@@ -30,7 +30,7 @@ describe('RoHS Questionnaire', () => {
     );
   });
 
-  it('should test the cancel button for a reach questionnaire', () => {
+  it('should test the cancel button for a RoHS  questionnaire', () => {
     cy.dataCy('cancel').click();
     cy.url().should('include', '/materials');
   });

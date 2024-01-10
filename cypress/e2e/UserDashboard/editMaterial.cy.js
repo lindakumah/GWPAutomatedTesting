@@ -7,12 +7,12 @@ describe('Edit material data', () => {
     cy.login(user.email, user.password);
     cy.url().should('include', '/dashboard');
     cy.dataCy('remove-session').contains('List of materials').click();
-  });
-
-  it('should copy questionnaire data to other materials', () => {
     cy.get('h2[role="loading"]', { timeout: 50000 }).should('not.exist');
     cy.get('tbody > tr > td').first().realHover();
     cy.dataCy('edit').first().click();
+  });
+
+  it('should copy questionnaire data to other materials', () => {
     cy.dataCy('ID').clear().type('123456');
     cy.dataCy('description').clear().type('A new material description');
     cy.get('button').contains('Save Changes').click();
@@ -22,7 +22,7 @@ describe('Edit material data', () => {
     );
   });
 
-  it.skip('should test the cancel button for a reach questionnaire', () => {
+  it.skip('should test the cancel button for a Edit material data', () => {
     cy.dataCy('cancel').click();
     cy.url().should('include', '/materials');
   });

@@ -8,7 +8,7 @@ describe('Register Page', () => {
   });
 
   it('should register successfully', () => {
-    cy.dataCy('companyId').type('222667');
+    cy.dataCy('companyId').type('200008');
     cy.dataCy('name').type('Linda CypressAutomation');
     cy.dataCy('username').type(usernameWithTimestamp);
     cy.dataCy('email').type(emailWithTimestamp);

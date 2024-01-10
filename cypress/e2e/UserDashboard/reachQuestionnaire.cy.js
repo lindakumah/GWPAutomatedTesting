@@ -11,19 +11,10 @@ describe('REACH Questionnaire', () => {
   });
 
   it.only('should fill and save a reach questionnaire', () => {
-    // cy.dataCy('checkbox').then((checkbox) => {
-    //   checkbox[0].defaultChecked === false
-    //     ? cy.dataCy('checkbox').dblclick()
-    //     : null;
-    // });
     cy.dataCy('reach-version').select('07/2019');
     cy.dataCy('material-type').select('Manufactured item');
-    //cy.wait(5000);
     cy.dataCy('annexRegulation').click();
     cy.contains('Material is NOT subject').click();
-    // cy.dataCy('annexRegulation').click(
-    //   'Material is subject to a restriction under Annex XVII of the REACH Regulation'
-    // );
     cy.dataCy('handle-add-row').click();
     cy.dataCy('material')
       .last()

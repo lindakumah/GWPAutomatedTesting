@@ -9,9 +9,9 @@ export const loginData = {
     password: 'alphaBeta',
   },
   unverifiedCredentials: {
-    email: 'hidef55827@rdluxe.com',
-    username: 'Unverified',
-    password: 'unverified123',
+    email: 'jaxode2698@taobudao.com',
+    username: 'Asdfgh',
+    password: 'Blume22!22',
   },
   lksgCredentials: {
     username: 'Letustry',
