@@ -12,7 +12,7 @@ describe('Edit material data', () => {
     cy.dataCy('edit').first().click();
   });
 
-  it('should copy questionnaire data to other materials', () => {
+  it('should edit questionnaire material numbar and description', () => {
     cy.dataCy('ID').clear().type('123456');
     cy.dataCy('description').clear().type('A new material description');
     cy.get('button').contains('Save Changes').click();
@@ -20,10 +20,5 @@ describe('Edit material data', () => {
       'have.text',
       'Material data updated successfully'
     );
-  });
-
-  it.skip('should test the cancel button for a Edit material data', () => {
-    cy.dataCy('cancel').click();
-    cy.url().should('include', '/materials');
   });
 });

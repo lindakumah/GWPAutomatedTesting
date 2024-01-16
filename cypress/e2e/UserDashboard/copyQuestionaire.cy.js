@@ -36,9 +36,4 @@ describe('Copy questionnaire data', () => {
       'Data copied successfully'
     );
   });
-
-  it.skip('should test the cancel button for a reach questionnaire', () => {
-    cy.dataCy('cancel').click();
-    cy.url().should('include', '/materials');
-  });
 });

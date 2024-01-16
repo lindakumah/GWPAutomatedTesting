@@ -50,3 +50,7 @@ Cypress.Commands.add('loginWithSession', (email, password) => {
 Cypress.Commands.add('waitForLoader', () => {
   cy.get('#loader-container', { timeout: 100000 }).should('not.exist');
 });
+
+Cypress.Commands.add('waitForPartslistsLoader', () => {
+  cy.get('h2[role="loading"]', { timeout: 100_000 }).should('not.exist');
+});

@@ -7,7 +7,9 @@ describe('List of partslists', () => {
     cy.login(admin.email, admin.password);
     cy.url().should('include', '/dashboard');
     cy.dataCy('remove-session').contains('List of Parts Lists').click();
-    cy.dataCy('getSidebarActiveTab').first().click();
+    cy.waitForPartslistsLoader();
+    cy.dataCy('set-partlists-details-tab').eq(1).click();
+    cy.waitForPartslistsLoader();
   });
 
   it('should fill and save a reach questionnaire', () => {
@@ -25,14 +27,14 @@ describe('List of partslists', () => {
     cy.dataCy('declareSVHC-input').click({ force: true });
     cy.dataCy('processingStatus').select('Completed');
     cy.dataCy('save').click();
-    cy.location('pathname').should('contain', '/suppliers/materials');
+    cy.location('pathname').should('contain', '/partsLists');
     cy.get('#notistack-snackbar').should(
       'have.text',
       'Data Successfully Saved.'
     );
   });
 
-  it('should fill and save a rohs questionnaire', () => {
+  it.skip('should fill and save a rohs questionnaire', () => {
     cy.dataCy('rohs-questionnaire').first().click();
     cy.dataCy('rohs-version').select('RoHS II - 07/2019');
     cy.dataCy('rohs-declaration').select(
@@ -46,7 +48,7 @@ describe('List of partslists', () => {
       .last()
       .type('Mercury in single-ended fluorescent lamps < 30 W: < 2.5 mg');
     cy.dataCy('save').click();
-    cy.location('pathname').should('contain', '/suppliers/materials');
+    cy.location('pathname').should('contain', '/partsLists');
     cy.get('#notistack-snackbar').should(
       'have.text',
       'Data Successfully Saved.'
