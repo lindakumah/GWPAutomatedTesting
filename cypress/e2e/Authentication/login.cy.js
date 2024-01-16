@@ -3,10 +3,6 @@ import { loginData } from '../../fixtures/logincredentials';
 const { user, invalidCredentials, unverifiedCredentials } = loginData;
 
 describe('User login', () => {
-  beforeEach(() => {
-    cy.visit('/');
-  });
-
   it('should log in with valid credentials', () => {
     cy.login(user.email, user.password);
     cy.url().should('include', '/dashboard');

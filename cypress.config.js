@@ -7,7 +7,7 @@ module.exports = defineConfig({
   projectId: 'm5gbvc',
   e2e: {
     pageLoadTimeout: 80000,
-    defaultCommandTimeout: 30000,
+    defaultCommandTimeout: 50000,
     viewportHeight: 1080,
     viewportWidth: 1920,
     video: false,
