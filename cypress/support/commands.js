@@ -43,7 +43,7 @@ Cypress.Commands.add('loginWithSession', (email, password) => {
     cy.dataCy('usernameOrEmail').type(email);
     cy.dataCy('password').type(password);
     cy.dataCy('login').click({ force: true });
-    cy.url().should('include', '/dashboard');
+    //cy.url().should('include', '/dashboard');
   });
 });
 

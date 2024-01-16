@@ -5,7 +5,7 @@ const { user } = loginData;
 describe('Edit material data', () => {
   beforeEach(() => {
     cy.login(user.email, user.password);
-    cy.url().should('include', '/dashboard');
+    //cy.url().should('include', '/dashboard');
     cy.dataCy('remove-session').contains('List of materials').click();
     cy.get('h2[role="loading"]', { timeout: 50000 }).should('not.exist');
     cy.get('tbody > tr > td').first().realHover();

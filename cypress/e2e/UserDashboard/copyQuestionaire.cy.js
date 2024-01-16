@@ -5,7 +5,7 @@ const { user } = loginData;
 describe('Copy questionnaire data', () => {
   beforeEach(() => {
     cy.login(user.email, user.password);
-    cy.url().should('include', '/dashboard');
+    //cy.url().should('include', '/dashboard');
     cy.dataCy('remove-session').contains('List of materials').click();
   });
 

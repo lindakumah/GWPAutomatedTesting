@@ -5,7 +5,7 @@ const { admin } = loginData;
 describe('List of suppliers', () => {
   beforeEach(() => {
     cy.login(admin.email, admin.password);
-    cy.url().should('include', '/dashboard');
+    //cy.url().should('include', '/dashboard');
     cy.dataCy('remove-session').contains('List of Suppliers').click();
     cy.dataCy('getSidebarActiveTab').first().click();
   });

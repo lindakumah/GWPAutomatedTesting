@@ -5,7 +5,7 @@ const { user } = loginData;
 describe('FAQs Page', () => {
   beforeEach(() => {
     cy.loginWithSession(user.email, user.password);
-    cy.visit('/dashboard');
+    //cy.visit('/dashboard');
     cy.dataCy('remove-session').contains('FAQs').click();
     cy.location('pathname').should('eq', '/faqs');
   });
