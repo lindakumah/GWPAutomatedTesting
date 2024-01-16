@@ -12,6 +12,8 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     video: false,
     retries: 0,
+    requestTimeout: 500000,
+    responseTimeout: 500000,
     scrollBehavior: 'center',
     chromeWebSecurity: false,
     //baseUrl: "https://mcp.gds.amalitech-dev.net",

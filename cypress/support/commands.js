@@ -28,11 +28,39 @@ Cypress.Commands.add('dataCy', (value) => {
   return cy.get(`[data-cy="${value}"]`);
 });
 
-const login = (email, password) => {
+Cypress.Commands.add('enterUsernameAndPassword', (email, password) => {
   cy.visit('/');
   cy.dataCy('usernameOrEmail').type(email);
   cy.dataCy('password').type(password);
   cy.dataCy('login').click();
+});
+
+const login = (email, password, user = true) => {
+  cy.intercept('POST', '/api/auth/login').as('login');
+  cy.intercept('GET', '/api/supplier/contact-profile').as('profile');
+  cy.intercept('GET', '/api/admin/dashboard/total-data').as('totalData');
+  cy.intercept('GET', '/api/admin/dashboard/partslist-precomputed').as(
+    'partialList1'
+  );
+  cy.intercept('GET', '/api/admin/dashboard/partslist').as('partialList2');
+  cy.intercept('GET', '/api/admin/dashboard/materials-overview').as(
+    'materialsOverview'
+  );
+  cy.intercept('GET', '/api/supplier/materials/questionnaires/overview').as(
+    'questionnaireOverview'
+  );
+  cy.enterUsernameAndPassword(email, password);
+  cy.wait('@login');
+  cy.waitForLoader();
+  user
+    ? cy.wait(['@profile', '@questionnaireOverview'])
+    : cy.wait([
+        '@profile',
+        '@totalData',
+        '@partialList1',
+        '@partialList2',
+        '@materialsOverview',
+      ]);
 };
 
 Cypress.Commands.add('login', login);
@@ -43,12 +71,11 @@ Cypress.Commands.add('loginWithSession', (email, password) => {
     cy.dataCy('usernameOrEmail').type(email);
     cy.dataCy('password').type(password);
     cy.dataCy('login').click({ force: true });
-    //cy.url().should('include', '/dashboard');
   });
 });
 
 Cypress.Commands.add('waitForLoader', () => {
-  cy.get('#loader-container', { timeout: 100000 }).should('not.exist');
+  cy.get('#loader-container ', { timeout: 100000 }).should('not.exist');
 });
 
 Cypress.Commands.add('waitForPartslistsLoader', () => {

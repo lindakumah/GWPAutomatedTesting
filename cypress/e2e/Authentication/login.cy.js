@@ -5,18 +5,23 @@ const { user, invalidCredentials, unverifiedCredentials } = loginData;
 describe('User login', () => {
   it('should log in with valid credentials', () => {
     cy.login(user.email, user.password);
-    //cy.url().should('include', '/dashboard');
   });
 
   it('should display an error message for invalid credentials', () => {
-    cy.login(invalidCredentials.email, invalidCredentials.password);
+    cy.enterUsernameAndPassword(
+      invalidCredentials.email,
+      invalidCredentials.password
+    );
     cy.get('#notistack-snackbar')
       .should('be.visible')
       .and('have.text', 'Username/email or password is invalid');
   });
 
   it('should login with unverified email', () => {
-    cy.login(unverifiedCredentials.email, unverifiedCredentials.password);
+    cy.enterUsernameAndPassword(
+      unverifiedCredentials.email,
+      unverifiedCredentials.password
+    );
     cy.get('#notistack-snackbar')
       .should('be.visible')
       .and(

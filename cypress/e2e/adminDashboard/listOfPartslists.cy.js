@@ -4,8 +4,7 @@ const { admin } = loginData;
 
 describe('List of partslists', () => {
   beforeEach(() => {
-    cy.login(admin.email, admin.password);
-    //cy.url().should('include', '/dashboard');
+    cy.login(admin.email, admin.password, false);
     cy.dataCy('remove-session').contains('List of Parts Lists').click();
     cy.waitForPartslistsLoader();
     cy.dataCy('set-partlists-details-tab').eq(1).click();

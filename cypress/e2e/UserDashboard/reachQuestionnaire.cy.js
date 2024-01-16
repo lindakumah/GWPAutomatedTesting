@@ -5,7 +5,6 @@ const { user } = loginData;
 describe('REACH Questionnaire', () => {
   beforeEach(() => {
     cy.login(user.email, user.password);
-    //cy.url().should('include', '/dashboard');
     cy.dataCy('remove-session').contains('List of materials').click();
     cy.dataCy('to-reach-questionnaire').first().click();
   });
