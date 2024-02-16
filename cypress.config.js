@@ -15,9 +15,8 @@ module.exports = defineConfig({
     requestTimeout: 500000,
     responseTimeout: 500000,
     scrollBehavior: 'center',
-    chromeWebSecurity: false,
-    //baseUrl: "https://mcp.gds.amalitech-dev.net",
-    baseUrl: 'https://gds-test.amalitech-dev.net/',
+    chromeWebSecurity: false, 
+    baseUrl: 'https://complyhub-staging.amalitech-dev.net/',
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
