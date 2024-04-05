@@ -21,4 +21,12 @@ export const loginData = {
     email: 'gdsweb47@gmail.com',
     password: 'password@123',
   },
+  superAdmin: {
+    username: 'customeradmin',
+    password: 'A!3fR@5zLq',
+  },
+  invalidSuperAdmin: {
+    username: 'customeradmin',
+    password: 'invalid',
+  },
 };
