@@ -15,8 +15,8 @@ module.exports = defineConfig({
     requestTimeout: 500000,
     responseTimeout: 500000,
     scrollBehavior: 'center',
-    chromeWebSecurity: false, 
-    baseUrl: 'https://complyhub-staging.amalitech-dev.net/',
+    chromeWebSecurity: false,
+    baseUrl: 'https://complyhub-test.amalitech-dev.net/',
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
