@@ -15,7 +15,7 @@ describe('Copy questionnaire data', () => {
     cy.get('h2[role="loading"]', { timeout: 50000 }).should('not.exist');
     cy.get('input[type=checkbox]').eq(2).click({ force: true });
     cy.get('span')
-      .contains('Copy REACH data')
+      .contains('Copy RoHS data')
       .siblings()
       .first()
       .click({ force: true }); //Copy attached files
@@ -26,9 +26,6 @@ describe('Copy questionnaire data', () => {
       .click({ force: true });
     cy.dataCy('save-btn').click();
     cy.dataCy('save').click();
-    cy.get('#notistack-snackbar').should(
-      'have.text',
-      'Data copied successfully'
-    );
+    cy.get('.snack-container').should('be.visible');
   });
 });

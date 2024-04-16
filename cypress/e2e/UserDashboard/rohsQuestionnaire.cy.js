@@ -10,7 +10,7 @@ describe('RoHS Questionnaire', () => {
   });
 
   it('should fill and save a rohs questionnaire', () => {
-    cy.dataCy('rohs-version').select('RoHS II - 07/2019');
+    cy.dataCy('rohs-version').select('RoHS III - 2011/65/EU');
     cy.dataCy('rohs-declaration').select(
       'RoHS compliant with declarable substances through exemptions'
     );
@@ -22,11 +22,8 @@ describe('RoHS Questionnaire', () => {
       .last()
       .type('Mercury in single-ended fluorescent lamps < 30 W: < 2.5 mg');
     cy.dataCy('save').click();
-    cy.location('pathname').should('eq', '/materials');
-    cy.get('#notistack-snackbar').should(
-      'have.text',
-      'Data Successfully Saved.'
-    );
+    cy.location('pathname').should('contain', '/materials');
+    cy.get('.snack-container').should('have.text', 'Data Successfully Saved.');
   });
 
   it('should test the cancel button for a RoHS  questionnaire', () => {

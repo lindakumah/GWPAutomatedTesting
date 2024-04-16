@@ -36,17 +36,17 @@ Cypress.Commands.add('enterUsernameAndPassword', (email, password) => {
 });
 
 const login = (email, password, user = true) => {
-  cy.intercept('POST', '/api/auth/login').as('login');
-  cy.intercept('GET', '/api/supplier/contact-profile').as('profile');
-  cy.intercept('GET', '/api/admin/dashboard/total-data').as('totalData');
-  cy.intercept('GET', '/api/admin/dashboard/partslist-precomputed').as(
+  cy.intercept('POST', '/auth/login').as('login');
+  cy.intercept('GET', '/supplier/contact-profile').as('profile');
+  cy.intercept('GET', '/admin/dashboard/total-data').as('totalData');
+  cy.intercept('GET', '/admin/dashboard/partslist-precomputed').as(
     'partialList1'
   );
-  cy.intercept('GET', '/api/admin/dashboard/partslist').as('partialList2');
-  cy.intercept('GET', '/api/admin/dashboard/materials-overview').as(
+  cy.intercept('GET', '/admin/dashboard/partslist').as('partialList2');
+  cy.intercept('GET', '/admin/dashboard/materials-overview').as(
     'materialsOverview'
   );
-  cy.intercept('GET', '/api/supplier/materials/questionnaires/overview').as(
+  cy.intercept('GET', '/supplier/materials/questionnaires/overview').as(
     'questionnaireOverview'
   );
   cy.enterUsernameAndPassword(email, password);

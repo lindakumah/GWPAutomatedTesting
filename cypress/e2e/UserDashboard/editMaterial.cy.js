@@ -15,7 +15,7 @@ describe('Edit material data', () => {
     cy.dataCy('ID').clear().type('123456');
     cy.dataCy('description').clear().type('A new material description');
     cy.get('button').contains('Save Changes').click();
-    cy.get('#notistack-snackbar').should(
+    cy.get('.snack-container').should(
       'have.text',
       'Material data updated successfully'
     );

@@ -5,6 +5,7 @@ const { user, invalidCredentials, unverifiedCredentials } = loginData;
 describe('User login', () => {
   it('should log in with valid credentials', () => {
     cy.login(user.email, user.password);
+    cy.dataCy('title').should('have.text', 'Dashboard');
   });
 
   it('should display an error message for invalid credentials', () => {

@@ -1,10 +1,10 @@
 import { loginData } from '../../fixtures/logincredentials';
 
-const { user } = loginData;
+const { lksgLogin } = loginData;
 
 describe('LKSG Questionnaire D', () => {
   beforeEach(() => {
-    cy.login(user.username, user.password);
+    cy.login(lksgLogin.email, lksgLogin.password);
     cy.dataCy('remove-session').contains('Supply Chain').click();
     cy.location('pathname').should('eq', '/supply-chain');
     cy.dataCy('tab-4').click();
@@ -15,7 +15,7 @@ describe('LKSG Questionnaire D', () => {
     cy.dataCy('questionTwoDropDown').select('No');
     cy.dataCy('questionThreeDropDown').select('No');
     cy.dataCy('save').first().click({ force: true });
-    cy.get('#notistack-snackbar').should('contain', 'Data Successfully Saved');
+    cy.get('.snack-container').should('contain', 'Data Successfully Saved');
   });
 
   it('should cancel LKSG questionnaire D', () => {

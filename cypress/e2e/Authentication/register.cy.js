@@ -15,8 +15,8 @@ describe('Register Page', () => {
     cy.dataCy('password').type('autopass@123');
     cy.dataCy('confirmPassword').type('autopass@123');
     cy.dataCy('register').click();
-    cy.get('#notistack-snackbar').should('be.visible');
-    cy.get('#notistack-snackbar').should(
+    cy.get('.snack-container').should('be.visible');
+    cy.get('.snack-container').should(
       'contain',
       'Thank you for registering. Please check your email for a link to verify your account'
     );

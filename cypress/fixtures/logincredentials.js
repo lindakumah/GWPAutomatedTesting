@@ -29,4 +29,8 @@ export const loginData = {
     username: 'customeradmin',
     password: 'invalid',
   },
+  lksgLogin: {
+    email: 'ginoj59918@ebuthor.com',
+    password: 'password111',
+  },
 };
