@@ -11,7 +11,7 @@ describe('List of partslists', () => {
     cy.waitForPartslistsLoader();
   });
 
-  it.skip('should fill and save a reach questionnaire', () => {
+  it('should fill and save a reach questionnaire', () => {
     cy.dataCy('to-reach-questionnaire').first().click();
     cy.dataCy('checkbox').click();
     cy.dataCy('reach-version').select('No. 1907/2006  upd. 05/2023');
