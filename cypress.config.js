@@ -1,9 +1,15 @@
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
-  // env: {
-  //   MAILOSAUR_API_KEY: "x76FxhhRQhrAQwGh",
-  // },
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: 'GWP Cypress Automation Report',
+    reportTitle: 'GWP Cypress Automation Report',
+    inlineAssets: true,
+    html: false,
+    json: true,
+  },
   projectId: 'm5gbvc',
   e2e: {
     pageLoadTimeout: 80000,
@@ -19,6 +25,7 @@ module.exports = defineConfig({
     baseUrl: 'https://complyhub-test.amalitech-dev.net/',
     setupNodeEvents(on, config) {
       // implement node event listeners here
+      require('cypress-mochawesome-reporter/plugin')(on);
     },
   },
 });

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/lindakumah/GWPAutomatedTesting#readme",
   "devDependencies": {
     "cypress": "^12.17.4",
+    "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-real-events": "^1.11.0"
   }
 }
